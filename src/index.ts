@@ -165,9 +165,14 @@ app.get('/CreateTache/:nomtache', async (req, res) => {
 //   res.send("delete ");
 // })
 
-app.get('/favicon.ico', function(req, res) { 
+app.get('/favicon.ico', function(_, res) { 
   res.sendStatus(204); 
 });
+
+app.get('/checkbox/:text_todo', async (req, res) => {
+  aaa(req)
+  res.send("chekbox " + req.params.text_todo);
+})
 
 app.listen( parseInt(PORT), () =>
   console.log("Server is listening on port " + PORT + "...")
@@ -202,8 +207,7 @@ app.listen( parseInt(PORT), () =>
 //       name: "logane"
 //     },
 //   });
-// }
-  
+// } 
 
 function Create_BDD(req:any) {
   let a = Math.floor(Math.random()*101)
@@ -213,13 +217,6 @@ function Create_BDD(req:any) {
       tirage: a,
     })
 }
-
-
-
-app.get('/checkbox/:text_todo', async (req, res) => {
-  aaa(req)
-  res.send("chekbox " + req.params.text_todo);
-})
 
 async function aaa (req:any){
   await Taches.update({ name: req.params.text_todo }, {

@@ -165,6 +165,9 @@ app.get('/CreateTache/:nomtache', async (req, res) => {
 //   res.send("delete ");
 // })
 
+app.get('/favicon.ico', function(req, res) { 
+  res.sendStatus(204); 
+});
 
 app.listen( parseInt(PORT), () =>
   console.log("Server is listening on port " + PORT + "...")

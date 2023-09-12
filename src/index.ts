@@ -1,7 +1,7 @@
 console.log("hello");
 import express from 'express'
 import "dotenv/config"
-import { DataTypes, NUMBER, Sequelize } from "sequelize"
+import { BOOLEAN, DataTypes, NUMBER, Sequelize } from "sequelize"
 
 // import { Sequelize } from 'sequelize';
 
@@ -115,6 +115,34 @@ import { DataTypes, NUMBER, Sequelize } from "sequelize"
 const app = express();
 const PORT = process.env.PORT as string;
 
+// const a = Math.floor(Math.random()*101)
+
+
+
+const sequelize = new Sequelize({
+  dialect: "sqlite",
+  storage: "./db.sqlite",
+})
+
+const Taches = sequelize.define('tache', {
+  name: {
+    type: DataTypes.STRING,
+  },
+  status: {
+    type: DataTypes.BOOLEAN
+  },
+  tirage: {
+    type: DataTypes.NUMBER
+  },
+}, {
+  timestamps: false,
+})
+
+sequelize
+  .sync({ force: true })
+
+
+
 app.get('/helloo', async (_, res) => {
     console.log("hello les toutous");
     res.send("ok")
@@ -174,34 +202,27 @@ app.listen( parseInt(PORT), () =>
   
 
 function Create_BDD(req:any) {
-
-  const a = Math.floor(Math.random()*101)
-
-  const sequelize = new Sequelize({
-    dialect: "sqlite",
-    storage: "./db.sqlite",
-  })
-  const Taches = sequelize.define(req.params.nomtache, {
-    name: {
-      type: DataTypes.STRING,
-      allowNull:false
-    },
-    tirage: {
-      type: DataTypes.NUMBER
-    },
-  }, {
-    timestamps: false,
-  })
-  sequelize
-  .sync({ force: true })
-  .then(() => {
+  let a = Math.floor(Math.random()*101)
     Taches.create({
       name: req.params.nomtache,
-      tirage: a
-      }) 
+      status: false,
+      tirage: a,
     })
-    .catch(error => {
-    console.error('Erreur de synchronisation:', error);
+}
+
+
+
+app.get('/checkbox/:text_todo', async (req, res) => {
+  aaa(req)
+  res.send("chekbox " + req.params.text_todo);
+})
+
+async function aaa (req:any){
+  await Taches.update({ name: req.params.text_todo }, {
+    where: {
+      status: true,
+    }
   });
 
+  await req.params.text_todo.save();
 }

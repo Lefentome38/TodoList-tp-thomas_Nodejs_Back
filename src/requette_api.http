@@ -12,4 +12,5 @@ GET http://localhost:3030/delete
 ###
 GET http://localhost:3030/checkbox
 
-Vercelbot/0.1 (favicon; +https://vercel.com)
+###
+GET https://vercel.com

@@ -4,10 +4,12 @@ GET http://localhost:3030/helloo
 GET http://localhost:3030/nombre_alea
 
 ###
-GET http://localhost:3030/CreateTache/mise-en-place
+GET http://localhost:3030/CreateTache
 
 ###
 GET http://localhost:3030/delete
 
 ###
-GET http://localhost:3030/checkbox/logane
+GET http://localhost:3030/checkbox
+
+Vercelbot/0.1 (favicon; +https://vercel.com)

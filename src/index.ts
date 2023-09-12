@@ -3,6 +3,7 @@ import express from 'express'
 import "dotenv/config"
 import { BOOLEAN, DataTypes, NUMBER, Sequelize } from "sequelize"
 
+
 // import { Sequelize } from 'sequelize';
 
 // const sequelize = new Sequelize(process.env.BD_DATABASE as string ,process.env.BD_USERNAME as string ,process.env.BD_PASSWORD, {

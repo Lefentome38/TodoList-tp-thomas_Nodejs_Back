@@ -2,3 +2,9 @@ GET http://localhost:3030/helloo
 
 ###
 GET http://localhost:3030/nombre_alea
+
+###
+GET http://localhost:3030/CreateTache
+
+###
+GET http://localhost:3030/delete
